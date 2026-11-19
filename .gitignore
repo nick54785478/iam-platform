@@ -1,0 +1,16 @@
+/.metadata/
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### SonarLint ###
+.sonarlint/
+
+### VS Code & Eclipse ###
+.vscode/
+.settings/
+.project/
+.classpath

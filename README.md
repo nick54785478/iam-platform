@@ -54,16 +54,16 @@ flowchart TB
     %% Client & Gateway Layer
     %% ==========================================
     subgraph Frontend ["前端呈現層 (Frontend Layer)"]
-        Angular["Angular 18 SPA\n(PrimeNG / RxJS)"]
+        Angular["Angular 18 SPA<br/>(PrimeNG / RxJS)"]
     end
 
     subgraph GatewayLayer ["API 網關層 (Gateway Layer)"]
-        Gateway["Spring Cloud Gateway\n(無狀態 / 異步轉發 / 驗證 JWT)"]
-        Redis[(Redis 7.0 + Redisson)\n(令牌桶限流 / Session 快取)]
-        Gateway -.-> |Rate Limiting| Redis
+        Gateway["Spring Cloud Gateway<br/>(無狀態 / 異步轉發 / 驗證 JWT)"]
+        Redis[("Redis 7.0 + Redisson<br/>(令牌桶限流 / Session 快取)")]
+        Gateway -.->|"Rate Limiting"| Redis
     end
     
-    Angular == "HTTPS / REST" ==> Gateway
+    Angular ==>|"HTTPS / REST"| Gateway
 
     %% ==========================================
     %% Core Domain Services Layer
@@ -72,54 +72,54 @@ flowchart TB
         
         %% --- 1. Tenant Service (Future Core) ---
         subgraph TS ["TenantService (未來的平台樞紐)"]
-            TS_App["Tenant Command Service\n(SaaS 租戶入駐 / 計費 / 停權)"]
-            TS_DB[(PostgreSQL\ntenant_db)]
-            TS_App --> |"Local TX"| TS_DB
+            TS_App["Tenant Command Service<br/>(SaaS 租戶入駐 / 計費 / 停權)"]
+            TS_DB[("PostgreSQL<br/>tenant_db")]
+            TS_App -->|"Local TX"| TS_DB
         end
 
         %% --- 2. DeptTree Service (Command/Write Side) ---
         subgraph DS ["DeptTreeService (組織與權限大腦)"]
-            DS_App["Department Command Service\n(聚合根 / 狀態流轉 / 拓撲檢查)"]
-            DS_DB[(PostgreSQL : dept_db\nClosure Table)]
-            DS_App --> |"Local TX"| DS_DB
-            DS_Outbox{"Outbox 輪詢\n(Redisson 分散式鎖)"}
+            DS_App["Department Command Service<br/>(聚合根 / 狀態流轉 / 拓撲檢查)"]
+            DS_DB[("PostgreSQL : dept_db<br/>Closure Table")]
+            DS_App -->|"Local TX"| DS_DB
+            DS_Outbox{"Outbox 輪詢<br/>(Redisson 分散式鎖)"}
             DS_DB -.-> DS_Outbox
         end
 
         %% --- 3. Auth Service (Read/Query Side + Identity) ---
         subgraph AS ["AuthService (認證與讀取視圖)"]
-            AS_Query["Auth Query Service\n(JWT 簽發 / 登入驗證 / 權限檢索)"]
-            AS_DB[(PostgreSQL : auth_db\nRich Projection View)]
-            AS_Proj["PermissionEventHandler\n(CQRS 充血投影器 + 邏輯時鐘防禦)"]
+            AS_Query["Auth Query Service<br/>(JWT 簽發 / 登入驗證 / 權限檢索)"]
+            AS_DB[("PostgreSQL : auth_db<br/>Rich Projection View")]
+            AS_Proj["PermissionEventHandler<br/>(CQRS 充血投影器 + 邏輯時鐘防禦)"]
             
-            AS_Proj --> |"Upsert (Version Check)"| AS_DB
-            AS_Query --> |"O(1) 快查"| AS_DB
+            AS_Proj -->|"Upsert (Version Check)"| AS_DB
+            AS_Query -->|"O(1) 快查"| AS_DB
         end
         
         %% --- 4. KYC Service ---
         subgraph KS ["KYC Service (實名合規)"]
-            KS_App["KYC Process Service\n(NationalId 等值物件校驗)"]
+            KS_App["KYC Process Service<br/>(NationalId 等值物件校驗)"]
         end
     end
 
-    Gateway == "Context Propagation\n(X-Tenant-Id)" ==> TS_App
-    Gateway == "Context Propagation\n(X-Tenant-Id)" ==> DS_App
-    Gateway == "Context Propagation\n(X-Tenant-Id)" ==> AS_Query
-    Gateway == "Context Propagation\n(X-Tenant-Id)" ==> KS_App
+    Gateway ==>|"Context Propagation<br/>(X-Tenant-Id)"| TS_App
+    Gateway ==>|"Context Propagation<br/>(X-Tenant-Id)"| DS_App
+    Gateway ==>|"Context Propagation<br/>(X-Tenant-Id)"| AS_Query
+    Gateway ==>|"Context Propagation<br/>(X-Tenant-Id)"| KS_App
 
     %% ==========================================
     %% Event Bus Layer (EDA)
     %% ==========================================
     subgraph EventBus ["事件總線層 (Event-Driven Architecture)"]
-        Kafka{{"Kafka 3.6 (KRaft 模式)\n(iam-kafka)"}}
+        Kafka{{"Kafka 3.6 (KRaft 模式)<br/>(iam-kafka)"}}
     end
 
     %% Event Publishing
-    DS_Outbox == "發布 DeptMergedEvent\nPermissionCreatedEvent" ==> Kafka
+    DS_Outbox ==>|"發布 DeptMergedEvent<br/>PermissionCreatedEvent"| Kafka
 
     %% Event Consuming
-    Kafka -.-> |"訂閱 PermissionCreatedEvent\n(投影更新)"| AS_Proj
-    Kafka -.-> |"訂閱 KYC 與租戶事件"| KS_App
+    Kafka -.->|"訂閱 PermissionCreatedEvent<br/>(投影更新)"| AS_Proj
+    Kafka -.->|"訂閱 KYC 與租戶事件"| KS_App
 
     %% Styling
     classDef client fill:#e0f7fa,stroke:#006064,stroke-width:2px;
@@ -128,11 +128,20 @@ flowchart TB
     classDef db fill:#fce4ec,stroke:#880e4f,stroke-width:2px;
     classDef kafka fill:#f1f8e9,stroke:#33691e,stroke-width:2px,stroke-dasharray: 5 5;
     
-    class Frontend client;
-    class GatewayLayer gateway;
-    class TS,DS,AS,KS service;
-    class DS_DB,AS_DB,TS_DB db;
-    class EventBus kafka;
+    class Angular client;
+    class Gateway gateway;
+    class TS_App,DS_App,AS_Query,AS_Proj,KS_App service;
+    class Redis,DS_DB,AS_DB,TS_DB db;
+    class Kafka kafka;
+
+    style Frontend fill:#f0fdfa,stroke:#006064,stroke-width:1px;
+    style GatewayLayer fill:#fffde7,stroke:#f57f17,stroke-width:1px;
+    style Microservices fill:#fafafa,stroke:#9e9e9e,stroke-width:1px;
+    style TS fill:#ede7f6,stroke:#512da8,stroke-width:1px;
+    style DS fill:#e8eaf6,stroke:#283593,stroke-width:1px;
+    style AS fill:#e3f2fd,stroke:#1565c0,stroke-width:1px;
+    style KS fill:#e0f2f1,stroke:#00796b,stroke-width:1px;
+    style EventBus fill:#f1f8e9,stroke:#33691e,stroke-width:1px,stroke-dasharray: 5 5;
 ```
 
 ---

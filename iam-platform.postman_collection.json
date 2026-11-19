@@ -1,0 +1,2646 @@
+{
+  "info": {
+    "_postman_id": "3e7864ce-1b94-4a17-b006-fc8253202832",
+    "name": "iam-platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "44211229",
+    "_collection_link": "https://go.postman.co/collection/44211229-3e7864ce-1b94-4a17-b006-fc8253202832?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "auth-service",
+      "item": [
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "新增使用者",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"username\":\"V-NICK.GH.ZHANG\",\r\n    \"password\":\"password123\",\r\n    \"email\": \"nick123@example.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/users",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "刪除 (停用) 使用者",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/V-NICK.GH.ZHANG",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "V-NICK.GH.ZHANG"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "查詢使用者",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/V-NICK.GH.ZHANG",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "V-NICK.GH.ZHANG"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "查出指定同仁在當前租戶空間內的所有角色與權限大上下文",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/V-NICK.GH.ZHANG/permissions-context",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "V-NICK.GH.ZHANG",
+                    "permissions-context"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "賦予使用者特定角色 (Assign Role)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/users/V-NICK.GH.ZHANG/roles/FINANCE_MANAGER",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "users",
+                    "V-NICK.GH.ZHANG",
+                    "roles",
+                    "FINANCE_MANAGER"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "group",
+          "item": [
+            {
+              "name": "新增群組",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"groupName\": \"財會群組\",\r\n    \"groupCode\": \"FINANCE_GROUP\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/groups",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "groups"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "重命名群組",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"newName\": \"財會群組\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/groups/FINANCE_GROUP/name",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "groups",
+                    "FINANCE_GROUP",
+                    "name"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "將特定角色批量賦予群組 (Assign Role to Group)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/groups/FINANCE_GROUP/roles/FINANCE_CLERK",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "groups",
+                    "FINANCE_GROUP",
+                    "roles",
+                    "FINANCE_CLERK"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "將指定使用者加入特定群組 (Add Group Member)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/groups/FINANCE_GROUP/members/V-NICK.GH.ZHANG",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "groups",
+                    "FINANCE_GROUP",
+                    "members",
+                    "V-NICK.GH.ZHANG"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "將指定使用者移出特定群組 (Remove Group Member)",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/groups/FINANCE_GROUP/members/V-NICK.GH.ZHANG",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "groups",
+                    "FINANCE_GROUP",
+                    "members",
+                    "V-NICK.GH.ZHANG"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "撤銷該群組綁定的特定角色 (Revoke Role from Group)",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/groups/FINANCE_GROUP/roles/FINANCE_MANAGER",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "groups",
+                    "FINANCE_GROUP",
+                    "roles",
+                    "FINANCE_MANAGER"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "查詢單一群組詳細成員與角色快照 (Read Detail)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/groups/FINANCE_GROUP",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "groups",
+                    "FINANCE_GROUP"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "查詢當前租戶空間下的全量群組視圖清單 (Read List)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/groups",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "groups"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "role",
+          "item": [
+            {
+              "name": "新增角色",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJWLU5JQ0suR0guWkhBTkciLCJpYXQiOjE3ODE0OTk5MjgsImV4cCI6MTc4MTU4NjMyOCwidGVuYW50IjoiV1BHIiwiYXV0aG9yaXRpZXMiOltdfQ.7hHzpTP-5ZuEcQczUb1zGQjzdrfxxAsPK-508Xin5TE",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "// {\r\n//     \"roleName\":\"高階財務經理\",\r\n//     \"roleCode\":\"FINANCE_MANAGER\"\r\n// }\r\n\r\n{\r\n    \"roleName\":\"財務人員\",\r\n    \"roleCode\":\"FINANCE_CLERK\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/roles",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "roles"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "角色更名 (以 roleCode 為路徑主角)",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"newName\":\"財務經理\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/roles/FINANCE_MANAGER/name",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "roles",
+                    "FINANCE_MANAGER",
+                    "name"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "接收子系統權限上報/指派",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "//初階財務人員可以執行\r\n{\r\n    \"systemCode\": \"order-subsystem\",\r\n    \"permissionCode\": \"ORDER_REFUND_APPROVE\",\r\n    \"permissionName\": \"審核退款\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/roles/FINANCE_CLERK/permissions",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "roles",
+                    "FINANCE_CLERK",
+                    "permissions"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "接收子系統權限上報/指派 (高階財務經理)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "// // 高階財務經理可以執行\r\n// {\r\n//     \"systemCode\": \"order-subsystem\",\r\n//     \"permissionCode\": \"ORDER_LARGE_REFUND_APPROVE\",\r\n//     \"permissionName\": \"審核大額退款\"\r\n// }\r\n//財務人員可以執行\r\n{\r\n    \"systemCode\": \"order-subsystem\",\r\n    \"permissionCode\": \"ORDER_REFUND_APPROVE\",\r\n    \"permissionName\": \"審核退款\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/roles/FINANCE_MANAGER/permissions",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "roles",
+                    "FINANCE_MANAGER",
+                    "permissions"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "查詢單一角色詳細資訊與全量權限 (Read Detail)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/roles/FINANCE_MANAGER",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "roles",
+                    "FINANCE_MANAGER"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "查詢當前租戶下的全角色視圖清單 (Read List)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "WPG",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/roles",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "roles"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "New Request",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dept-service",
+      "item": [
+        {
+          "name": "建立節點(WPG)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id\": \"100\",\r\n  \"parentId\": null,\r\n  \"code\": \"A\",\r\n  \"name\": \"Dept A\"\r\n}\r\n// // B under A\r\n// {\r\n//     \"id\": \"200\",\r\n//     \"parentId\": \"100\",\r\n//     \"code\": \"B\",\r\n//     \"name\": \"Dept B\"\r\n// }\r\n// // C under A\r\n// {\r\n//   \"id\": \"300\",\r\n//   \"parentId\": \"100\",\r\n//   \"code\": \"C\",\r\n//   \"name\": \"Dept C\"\r\n// }\r\n// // D under B\r\n// {\r\n//   \"id\": \"400\",\r\n//   \"parentId\": \"200\",\r\n//   \"code\": \"D\",\r\n//   \"name\": \"Dept D\"\r\n// }\r\n// // C1 under A\r\n// {\r\n//   \"id\": \"301\",\r\n//   \"parentId\": \"100\",\r\n//   \"code\": \"C1\",\r\n//   \"name\": \"Dept C1\"\r\n// }\r\n// // E under B\r\n// {\r\n//   \"id\": \"500\",\r\n//   \"parentId\": \"200\",\r\n//   \"code\": \"E\",\r\n//   \"name\": \"Dept E\"\r\n// }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/departments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "建立樹(WPG)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id\": \"100\",\r\n    \"parentId\": null,\r\n    \"code\": \"A\",\r\n    \"name\": \"Dept A\",\r\n    \"children\": [\r\n        {\r\n            \"id\": \"200\",\r\n            \"parentId\": \"100\",\r\n            \"code\": \"B\",\r\n            \"name\": \"Dept B\",\r\n            \"children\": [\r\n                {\r\n                    \"id\": \"400\",\r\n                    \"parentId\": \"200\",\r\n                    \"code\": \"D\",\r\n                    \"name\": \"Dept D\",\r\n                    \"children\": []\r\n                },\r\n                {\r\n                    \"id\": \"500\",\r\n                    \"parentId\": \"200\",\r\n                    \"code\": \"E\",\r\n                    \"name\": \"Dept E\",\r\n                    \"children\": []\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"id\": \"300\",\r\n            \"parentId\": \"100\",\r\n            \"code\": \"C\",\r\n            \"name\": \"Dept C\",\r\n            \"children\": []\r\n        },\r\n        {\r\n            \"id\": \"301\",\r\n            \"parentId\": \"100\",\r\n            \"code\": \"C1\",\r\n            \"name\": \"Dept C1\",\r\n            \"children\": []\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/departments/tree",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "tree"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "建立節點 (Delta)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "Delta",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "// {\r\n//   \"id\": \"101\",\r\n//   \"parentId\": null,\r\n//   \"code\": \"A\",\r\n//   \"name\": \"Dept A\"\r\n// }\r\n// B under A\r\n// {\r\n//     \"id\": \"201\",\r\n//     \"parentId\": \"101\",\r\n//     \"code\": \"B\",\r\n//     \"name\": \"Dept B\"\r\n// }\r\n// // C under A\r\n// {\r\n//   \"id\": \"300\",\r\n//   \"parentId\": \"100\",\r\n//   \"code\": \"C\",\r\n//   \"name\": \"Dept C\"\r\n// }\r\n// // D under B\r\n// {\r\n//   \"id\": \"400\",\r\n//   \"parentId\": \"200\",\r\n//   \"code\": \"D\",\r\n//   \"name\": \"Dept D\"\r\n// }\r\n// C1 under A\r\n// {\r\n//   \"id\": \"301\",\r\n//   \"parentId\": \"100\",\r\n//   \"code\": \"C1\",\r\n//   \"name\": \"Dept C1\"\r\n// }\r\n// // E under B\r\n// {\r\n//   \"id\": \"500\",\r\n//   \"parentId\": \"200\",\r\n//   \"code\": \"E\",\r\n//   \"name\": \"Dept E\"\r\n// }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/departments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "移動節點 (把 C 移到 B 底下)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "// 100 (A)\r\n// ├── 200 (B)\r\n// │   └── 400 (D)\r\n// └── 300 (C)\r\n// 把 C 移到 B 底下\r\n{\r\n    \"departmentId\": \"300\",\r\n    \"newParentId\": \"200\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/departments/move",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "move"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "移動節點",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "// 100 (A)\r\n// ├── 200 (B)\r\n// │   └── 400 (D)\r\n// └── 300 (C)\r\n// 把整個 B 移到 C 底下\r\n{\r\n    \"tenantId\": \"WPG\",\r\n    \"departmentId\": \"200\",\r\n    \"newParentId\": \"300\",\r\n    \"operator\": \"tester\"\r\n}\r\n// // 把整個 C 移到 C1 底下\r\n// {\r\n//     \"tenantId\": \"WPG\",\r\n//     \"departmentId\": \"300\",\r\n//     \"newParentId\": \"301\",\r\n//     \"operator\": \"tester\"\r\n// }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/departments/move",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "move"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "復原已刪除的部門",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/departments/200/restore",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "200",
+                "restore"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "部門重新命名",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\":\"大聯大控股\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/departments/100/name",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "100",
+                "name"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "停用部門",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/departments/100/disable",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "100",
+                "disable"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "調整部門排序權重(越小越前面)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"sortOrder\":20\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/departments/300/sort-order",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "300",
+                "sort-order"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "刪除部門",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              },
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/departments/200",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "200"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "取得事件稽核軌跡 (Audit Log)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/departments/WPG/100/events",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "WPG",
+                "100",
+                "events"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "時光機查詢 - 還原到指定時間點的狀態",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/departments/WPG/100/state/at?timestamp=2026-06-02T16:10:02.880056Z",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "WPG",
+                "100",
+                "state",
+                "at"
+              ],
+              "query": [
+                {
+                  "key": "timestamp",
+                  "value": "2026-06-02T16:10:02.880056Z"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "取得最新狀態 (透過事件溯源重建)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/departments/WPG/100/state/current",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "WPG",
+                "100",
+                "state",
+                "current"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "取得樹狀節點",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "// {\r\n//   \"id\": 100,\r\n//   \"parentId\": null,\r\n//   \"code\": \"A\",\r\n//   \"name\": \"Dept A\",\r\n//   \"operator\": \"system\"\r\n// }\r\n\r\n// {\r\n//   \"id\": 200,\r\n//   \"parentId\": 100,\r\n//   \"code\": \"B\",\r\n//   \"name\": \"Dept B\",\r\n//   \"operator\": \"system\"\r\n// }\r\n\r\n// {\r\n//   \"id\": 300,\r\n//   \"parentId\": 100,\r\n//   \"code\": \"C\",\r\n//   \"name\": \"Dept C\",\r\n//   \"operator\": \"system\"\r\n// }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/departments/WPG/100/tree",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "WPG",
+                "100",
+                "tree"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "取得麵包屑",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/departments/WPG/400/breadcrumbs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "WPG",
+                "400",
+                "breadcrumbs"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "模糊搜尋部門",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/departments/WPG/search?keyword=C",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "WPG",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Json Format",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"tenantId\": \"WPG\",\r\n    \"departmentId\": \"301\",\r\n    \"operator\": \"nick.gh.zhang@example.com\",\r\n    \"eventId\": \"faa5bee7-a344-4504-872a-4b3ee90b1b25\",\r\n    \"occurredAt\": \"2026-05-29T02:25:15.524555800Z\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/departments/WPG/search?keyword=C",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "WPG",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "keyword",
+                  "value": "C"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "分配員工到部門",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"employeeId\": \"107054\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/departments/300/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "300",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "觸發全系統讀取端重建 (Full Projection Rebuild)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Admin-Token",
+                "value": "SYS-REBUILD-999",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/admin/system/projections/rebuild",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "v1",
+                "admin",
+                "system",
+                "projections",
+                "rebuild"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "從部門移除員工",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Tenant-Id",
+                "value": "WPG",
+                "type": "text"
+              },
+              {
+                "key": "X-User-Id",
+                "value": "nick.gh.zhang@example.com",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/departments/300/employees/107054",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "departments",
+                "300",
+                "employees",
+                "107054"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "gateway",
+      "item": [
+        {
+          "name": "AuthService",
+          "item": [
+            {
+              "name": "roles",
+              "item": [
+                {
+                  "name": "角色更名 (以 roleCode 為路徑主角)",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"newName\":\"財務經理\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/roles/FINANCE_MANAGER/name",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "roles",
+                        "FINANCE_MANAGER",
+                        "name"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "新增角色",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "// {\r\n//     \"roleName\":\"高階財務經理\",\r\n//     \"roleCode\":\"FINANCE_MANAGER\"\r\n// }\r\n\r\n{\r\n    \"roleName\":\"財務人員\",\r\n    \"roleCode\":\"FINANCE_CLERK\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:9000/api/roles",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "roles"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "接收子系統權限上報/指派",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "//初階財務人員可以執行\r\n{\r\n    \"systemCode\": \"order-subsystem\",\r\n    \"permissionCode\": \"ORDER_REFUND_APPROVE\",\r\n    \"permissionName\": \"審核退款\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/roles/FINANCE_CLERK/permissions",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "roles",
+                        "FINANCE_CLERK",
+                        "permissions"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "接收子系統權限上報/指派 (高階財務經理)",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "// // 高階財務經理可以執行\r\n{\r\n    \"systemCode\": \"order-subsystem\",\r\n    \"permissionCode\": \"ORDER_LARGE_REFUND_APPROVE\",\r\n    \"permissionName\": \"審核大額退款\"\r\n}\r\n//財務人員可以執行\r\n// {\r\n//     \"systemCode\": \"order-subsystem\",\r\n//     \"permissionCode\": \"ORDER_REFUND_APPROVE\",\r\n//     \"permissionName\": \"審核退款\"\r\n// }",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:9000/api/roles/FINANCE_MANAGER/permissions",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "roles",
+                        "FINANCE_MANAGER",
+                        "permissions"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "查詢單一角色詳細資訊與全量權限 (Read Detail)",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:9000/api/roles/FINANCE_MANAGER",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "roles",
+                        "FINANCE_MANAGER"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "查詢當前租戶下的全角色視圖清單 (Read List)",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:9000/api/roles",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "roles"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "新增使用者",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"tenantCode\": \"WPG\",\r\n    \"username\":\"107054\",\r\n    \"password\":\"password123\",\r\n    \"email\": \"107054@example.com\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:9000/api/auth/register",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "auth",
+                        "register"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "刪除 (停用) 使用者",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:9000/api/users/107054",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "users",
+                        "107054"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "重啟使用者",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:9000/api/users/107054/reactivate",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "users",
+                        "107054",
+                        "reactivate"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "查詢使用者",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:9000/api/users/107054",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "users",
+                        "107054"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "查出指定同仁在當前租戶空間內的所有角色與權限大上下文",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:9000/api/users/107054/permissions-context",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "users",
+                        "107054",
+                        "permissions-context"
+                      ],
+                      "query": [
+                        {
+                          "key": null,
+                          "value": "",
+                          "description": "admin@wpgholding.com",
+                          "type": "text",
+                          "disabled": true
+                        },
+                        {
+                          "key": null,
+                          "value": null,
+                          "description": "V-NICK.GH.ZHANG",
+                          "type": "text",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "賦予使用者特定角色 (Assign Role)",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:9000/api/users/107054/roles/FINANCE_MANAGER",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "users",
+                        "107054",
+                        "roles",
+                        "FINANCE_MANAGER"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "groups",
+              "item": [
+                {
+                  "name": "重命名群組",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"newName\": \"財會群組\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/api/groups/FINANCE_GROUP/name",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "groups",
+                        "FINANCE_GROUP",
+                        "name"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "新增群組",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"groupName\": \"財會群組\",\r\n    \"groupCode\": \"FINANCE_GROUP\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:9000/api/groups",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "groups"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "將特定角色批量賦予群組 (Assign Role to Group)",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:9000/api/groups/FINANCE_GROUP/roles/FINANCE_CLERK",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "groups",
+                        "FINANCE_GROUP",
+                        "roles",
+                        "FINANCE_CLERK"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "將指定使用者加入特定群組 (Add Group Member)",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:8080/api/groups/FINANCE_GROUP/members/107054",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "groups",
+                        "FINANCE_GROUP",
+                        "members",
+                        "107054"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "撤銷該群組綁定的特定角色 (Revoke Role from Group)",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:9000/api/groups/FINANCE_GROUP/roles/FINANCE_MANAGER",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "groups",
+                        "FINANCE_GROUP",
+                        "roles",
+                        "FINANCE_MANAGER"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "查詢單一群組詳細成員與角色快照 (Read Detail)",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:8080/api/groups/FINANCE_GROUP",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "groups",
+                        "FINANCE_GROUP"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "將指定使用者移出特定群組 (Remove Group Member)",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:9000/api/groups/FINANCE_GROUP/members/V-NICK.GH.ZHANG",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "groups",
+                        "FINANCE_GROUP",
+                        "members",
+                        "V-NICK.GH.ZHANG"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "查詢當前租戶空間下的全量群組視圖清單 (Read List)",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "WPG",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "http://localhost:8080/api/groups",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "api",
+                        "groups"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "permission",
+              "item": [
+                {
+                  "name": "獲取權限字典清單",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:9000/api/permissions/dict?module&keyword=DEPT_CREATE",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "permissions",
+                        "dict"
+                      ],
+                      "query": [
+                        {
+                          "key": "module",
+                          "value": null
+                        },
+                        {
+                          "key": "keyword",
+                          "value": "DEPT_CREATE"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "DeptService",
+          "item": [
+            {
+              "name": "permission",
+              "item": [
+                {
+                  "name": "自動宣告或等冪覆蓋更新權限字典",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"code\": \"dept-service:DEPT_CREATE\",\r\n    \"name\": \"建立組織\",\r\n    \"description\":\"允許建立新的部門節點\",\r\n    \"module\":\"Department\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:9000/api/departments/permissions",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "9000",
+                      "path": [
+                        "api",
+                        "departments",
+                        "permissions"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "停用部門",
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "X-Tenant-Id",
+                    "value": "WPG",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Id",
+                    "value": "nick.gh.zhang@example.com",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/100/disable",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "100",
+                    "disable"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "建立節點(WPG)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-Id",
+                    "value": "WPG",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Id",
+                    "value": "nick.gh.zhang@example.com",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "// {\r\n//   \"id\": \"100\",\r\n//   \"parentId\": null,\r\n//   \"code\": \"A\",\r\n//   \"name\": \"Dept A\"\r\n// }\r\n// // B under A\r\n// {\r\n//     \"id\": \"200\",\r\n//     \"parentId\": \"100\",\r\n//     \"code\": \"B\",\r\n//     \"name\": \"Dept B\"\r\n// }\r\n// // C under A\r\n// {\r\n//   \"id\": \"300\",\r\n//   \"parentId\": \"100\",\r\n//   \"code\": \"C\",\r\n//   \"name\": \"Dept C\"\r\n// }\r\n// // D under B\r\n// {\r\n//   \"id\": \"400\",\r\n//   \"parentId\": \"200\",\r\n//   \"code\": \"D\",\r\n//   \"name\": \"Dept D\"\r\n// }\r\n// // C1 under A\r\n// {\r\n//   \"id\": \"301\",\r\n//   \"parentId\": \"100\",\r\n//   \"code\": \"C1\",\r\n//   \"name\": \"Dept C1\"\r\n// }\r\n// // E under B\r\n// {\r\n//   \"id\": \"500\",\r\n//   \"parentId\": \"200\",\r\n//   \"code\": \"E\",\r\n//   \"name\": \"Dept E\"\r\n// }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:9000/api/departments",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "取得樹狀節點",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/WPG/100/tree?includeDisabled=true",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "WPG",
+                    "100",
+                    "tree"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDisabled",
+                      "value": "true"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "獲取指定使用者的部門樹狀結構 (包含所屬部門與轄下所有子樹)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/users/V-NICK.GH.ZHANG/tree",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "users",
+                    "V-NICK.GH.ZHANG",
+                    "tree"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "查詢指定租戶的頂層根部門列表",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/roots?code=&name&page&size",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "roots"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": ""
+                    },
+                    {
+                      "key": "name",
+                      "value": null
+                    },
+                    {
+                      "key": "page",
+                      "value": null
+                    },
+                    {
+                      "key": "size",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "獲取分頁化且支援動態多條件檢索的 API 保護規則",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/api-rules?tenantId=WPG",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "api-rules"
+                  ],
+                  "query": [
+                    {
+                      "key": "tenantId",
+                      "value": "WPG",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "建立 API 保護規則",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"httpMethod\":\"POST\",\r\n    \"pathPattern\":\"/api/departments/test\",\r\n    \"requiredPermission\": \"dept-service:DEPT_TEST\",\r\n    \"priority\":10\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/api-rules",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "api-rules"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "建立樹(WPG)",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": \"100\",\r\n    \"parentId\": null,\r\n    \"code\": \"A\",\r\n    \"name\": \"Dept A\",\r\n    \"children\": [\r\n        {\r\n            \"id\": \"200\",\r\n            \"parentId\": \"100\",\r\n            \"code\": \"B\",\r\n            \"name\": \"Dept B\",\r\n            \"children\": [\r\n                {\r\n                    \"id\": \"400\",\r\n                    \"parentId\": \"200\",\r\n                    \"code\": \"D\",\r\n                    \"name\": \"Dept D\",\r\n                    \"children\": []\r\n                },\r\n                {\r\n                    \"id\": \"500\",\r\n                    \"parentId\": \"200\",\r\n                    \"code\": \"E\",\r\n                    \"name\": \"Dept E\",\r\n                    \"children\": []\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"id\": \"300\",\r\n            \"parentId\": \"100\",\r\n            \"code\": \"C\",\r\n            \"name\": \"Dept C\",\r\n            \"children\": []\r\n        },\r\n        {\r\n            \"id\": \"301\",\r\n            \"parentId\": \"100\",\r\n            \"code\": \"C1\",\r\n            \"name\": \"Dept C1\",\r\n            \"children\": []\r\n        }\r\n    ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/tree",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "tree"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "分配員工到部門",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "nick.gh.zhang@example.com",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"employeeId\": \"V-NICK.GH.ZHANG\"\r\n}\r\n\r\n// {\r\n//   \"employeeId\": \"V-TOMMY.CF.LIN\"\r\n// }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/300/employees",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "300",
+                    "employees"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "移動節點 (把 C 移到 B 底下)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-Id",
+                    "value": "WPG",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Id",
+                    "value": "nick.gh.zhang@example.com",
+                    "type": "text",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "// 100 (A)\r\n// ├── 200 (B)\r\n// │   └── 400 (D)\r\n// └── 300 (C)\r\n// 把 C 移到 B 底下\r\n{\r\n    \"departmentId\": \"300\",\r\n    \"newParentId\": \"200\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/move",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "move"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "觸發全系統讀取端重建 (Full Projection Rebuild)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Admin-Token",
+                    "value": "SYS-REBUILD-999",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Id",
+                    "value": "nick.gh.zhang@example.com",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:9000/api/v1/admin/system/projections/rebuild",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "v1",
+                    "admin",
+                    "system",
+                    "projections",
+                    "rebuild"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "取得麵包屑",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/WPG/400/breadcrumbs",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "WPG",
+                    "400",
+                    "breadcrumbs"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "從部門移除員工",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-Tenant-Id",
+                    "value": "WPG",
+                    "type": "text"
+                  },
+                  {
+                    "key": "X-User-Id",
+                    "value": "nick.gh.zhang@example.com",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:9000/api/departments/300/employees/V-NICK.GH.ZHANG",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "departments",
+                    "300",
+                    "employees",
+                    "V-NICK.GH.ZHANG"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {},
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {},
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "TenantService",
+          "item": [
+            {
+              "name": "註冊一個租戶",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"tenantId\":\"WITS\",\r\n    \"companyName\":\"緯創軟體\",\r\n    \"planType\":\"FREE\",\r\n    \"adminEmail\":\"wits@example.com\",\r\n    \"plainPassword\":\"password123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:9000/api/platform/tenants",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "platform",
+                    "tenants"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "KycService",
+          "item": [
+            {
+              "name": "提交個人資訊",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"firstName\": \"耿豪\",\r\n    \"lastName\": \"張\",\r\n    \"idNumber\": \"T124149396\",\r\n    \"countryCode\":\"TW\",\r\n    \"documentType\": \"NATIONAL_ID_CARD\",\r\n    \"dateOfBirth\": \"1995-09-01\",\r\n    \"addrCountry\": \"台灣\",\r\n    \"addrState\": \"南港區\",\r\n    \"addrCity\": \"台北市\",\r\n    \"addrPostalCode\": \"115\",\r\n    \"addrDetail\": \"昆陽街150-4\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:9000/api/kyc/submit",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "kyc",
+                    "submit"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "使用者查詢自身的完整 KYC 審核明細",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:9000/api/kyc/me",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "9000",
+                  "path": [
+                    "api",
+                    "kyc",
+                    "me"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "使用者登入",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\":\"V-NICK.GH.ZHANG\",\r\n    \"password\":\"password123\",\r\n    \"tenantCode\":\"WPG\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "9000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJWLU5JQ0suR0guWkhBTkciLCJpYXQiOjE3ODMzMjg4NDUsImV4cCI6MTc4MzQxNTI0NSwidGVuYW50IjoiV1BHIiwiYXV0aG9yaXRpZXMiOlsiYXV0aC1zZXJ2aWNlOkFETUlOX0FMTCJdfQ.c4vFbviNBRPAdk9g-Mwpgcrcs2ITqQ3ejKyXZ2g75t0",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
